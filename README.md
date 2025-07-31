@@ -23,7 +23,7 @@ Plz download the data from [data](https://drive.google.com/drive/folders/1UFqj18
 The pretrained model file contains two folder:
 
 **training** .
-**testing**  
+**testing**  Checkpoints for [MR2CT link](https://drive.google.com/file/d/1UoRXtWvF0CxXgxSwM5EoGm0lnZBSifm8/view)  and [CT2MR link](https://drive.google.com/file/d/1denpk8V04G8ot7rC5wSTRTAqz-C9voQW/view)
 
 
 ## Training
