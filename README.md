@@ -1,7 +1,7 @@
 
 # TCSA-UDA: Text-Driven Cross-Semantic Alignment for Unsupervised Domain Adaptation in Medical Image Segmentation
 
-This repository contains the **testing code** for our **AAAI 2026 submission**, which introduces a novel UDA framework called **TSCA-UDA** (Text-Driven Cross-Semantic Alignment for Unsupervised Domain Adaptation in Medical Image Segmentation). 
+This repository contains the **testing code** for our **AAAI 2026 submission**, which introduces a novel UDA framework called **TCSA-UDA** (Text-Driven Cross-Semantic Alignment for Unsupervised Domain Adaptation in Medical Image Segmentation). 
 
 
 
