@@ -28,29 +28,29 @@ The pretrained model file contains two folder:
 
 ## Training
 
-To train SE_ASA
+To train LCSA-UDA
 
-* cd <root_dir>/SE_ASA/scripts/
+* cd <root_dir>/LCSA_UDA/scripts/
 
 For MR2CT
-* CUDA_VISIBLE_DEVICES=#device_id# python train.py --cfg ./configs/SE_ASA_MR2CT.yml
+* CUDA_VISIBLE_DEVICES=#device_id# python train.py --cfg ./configs/ours_MR2CT.yml
 
 For CT2MR
-* CUDA_VISIBLE_DEVICES=#device_id# python train.py --cfg ./configs/SE_ASA_CT2MR.yml
+* CUDA_VISIBLE_DEVICES=#device_id# python train.py --cfg ./configs/ours_CT2MR.yml
 
 ## Testing
 
-To test SE_ASA
+To test LCSA-UDA
 
 **If you want to test our released pretrained model**
 
 * cd <root_dir>/SE_ASA/scripts
 
 For MR2CT
-* CUDA_VISIBLE_DEVICES=#device_id# python test.py --target_modality 'CT' --pretrained_model_pth '../pretrained_model/testing/SE_ASA_MR2CT_best.pth'
+* CUDA_VISIBLE_DEVICES=#device_id# python test.py --target_modality 'CT' --pretrained_model_pth '../pretrained_model/testing/ours_MR2CT_best.pth'
 
 For CT2MR
-* CUDA_VISIBLE_DEVICES=#device_id# python test.py --target_modality 'MR' --pretrained_model_pth '../pretrained_model/testing/SE_ASA_CT2MR_best.pth'
+* CUDA_VISIBLE_DEVICES=#device_id# python test.py --target_modality 'MR' --pretrained_model_pth '../pretrained_model/testing/ours_CT2MR_best.pth'
 
 **If you want to test your model**
 
