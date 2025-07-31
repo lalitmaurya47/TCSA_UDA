@@ -1,0 +1,14 @@
+SOURCE: MR
+TARGET: MR
+NUM_WORKERS: 4
+FULLY_SUPERVISED: False
+TRAIN:
+  MAX_ITERS: 10000
+  DA_METHOD: baseline
+  MODEL:     DeepLabv2
+  RESTORE_FROM: /users/lalit47/USD/experiments/snapshots/MR2MR/baseline_MR2MR/model_best.pth
+  MULTI_LEVEL:     True
+  LAMBDA_DICE_SRC_MAIN: 1.0
+  LAMBDA_DICE_SRC_AUX:  0.1
+TEST:
+  MODE: best

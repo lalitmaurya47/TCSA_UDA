@@ -1,0 +1,67 @@
+import sys
+import os
+curPath = os.path.abspath(os.path.dirname('/users/lalit47/USD/')) # 获取当前绝对路径C
+sys.path.append(curPath)
+rootPath = os.path.split(curPath)[0]				 # 上一级目录B
+sys.path.append(rootPath)
+sys.path.append(os.path.split(rootPath)[0])
+import argparse
+import scipy.io as scio
+import warnings
+
+from domain_adaptation.eval_UDA import eval
+from model.deeplabv2 import get_deeplab_v2
+from model.multimod_v3 import MulModSeg2D
+from domain_adaptation.config import cfg, cfg_from_file
+warnings.filterwarnings("ignore", message="numpy.dtype size changed")
+warnings.filterwarnings("ignore")
+import numpy as np
+
+def get_arguments():
+    """
+    Parse input arguments
+    """
+
+    parser = argparse.ArgumentParser(description="Code for domain adaptation (DA) training")
+    parser.add_argument('--pretrained_model_pth', type=str,
+        # default='/mnt/workdir/fengwei/ultra_wide/DAUDA_IMAGE/mspcl/scripts/experiments/snapshots/CT2MR/MT_CT2MR/model_4000.pth',
+     default="/users/lalit47/USD/experiments/snapshots/MR2CT/senery_MR2CT/model_best.pth",
+                        help='optional config file', )
+    parser.add_argument('--target_modality', type=str, default='CT',
+                        help='optional modality', )
+    parser.add_argument('--Method', type=str, default='senery',
+                        help='optional method', )
+    return parser.parse_args()
+
+
+def main():
+    #LOAD ARGS
+    args = get_arguments()
+
+    test_list_pth = None
+    target_modality = args.target_modality
+
+    if target_modality == 'CT':
+        test_list_pth = '/data/datalist/test_ct.txt'
+    if target_modality == 'MR':
+        test_list_pth = '/data/datalist/test_mr.txt'
+    with open(test_list_pth) as fp:
+        rows = fp.readlines()
+    testfile_list = [row[:-1] for row in rows]
+
+    model = None
+    if cfg.TRAIN.MODEL == 'DeepLabv2':
+        
+        model = MulModSeg2D(out_channels=cfg.NUM_CLASSES, backbone='deeplabv2', encoding='word_embedding', 
+                            multi_level=cfg.TRAIN.MULTI_LEVEL, embedding_path= '/users/lalit47/USD/mod_cls_txt_encoding_heart_new.pth')
+
+
+    pretrained_model_pth  = args.pretrained_model_pth
+
+    Method = args.Method
+    print('target_modality is {},method is {}'.format(target_modality,args.Method))
+    dice_mean,dice_std,assd_mean,assd_std,ece_value = eval(model,testfile_list,target_modality,pretrained_model_pth ,Method, save_img=False)
+    #print(model)
+
+if __name__ == '__main__':
+    main()
