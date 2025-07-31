@@ -22,8 +22,8 @@ Plz download the data from [data](https://drive.google.com/drive/folders/1UFqj18
 * Plz download the pretrained model from [pretrained_model](https://drive.google.com/drive/folders/1UFqj18A4vuoknldoqAkg9tx7S6CUjxRL) and put it in ./pretrained_model folder
 The pretrained model file contains two folder:
 
-**training** contains the initialized models of our SE_ASA for adaptive entropy regularization, as described in the implementation details of our paper.
-**testing**  contains the models corresponding to the results in our paper
+**training** .
+**testing**  
 
 
 ## Training
